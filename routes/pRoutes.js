@@ -1,9 +1,6 @@
-// routes/bookRoutes.js
 const express = require('express');
 const router = express.Router();
 const pf = require('../models/projects');
-
-
 
 
 router.get('/movies', async (req, res) => {
@@ -38,8 +35,10 @@ router.post('/movie/data', async (req, res) => {
   
 });
 
-router.delete('/movie/delete',async(req,res)=>{
-  const ss= await pf.findOneAndDelete(req.body)
+router.delete('/movie/delete/:id',async(req,res)=>{
+  const del = {"_id":req.params.id}
+
+  const ss= await pf.findOneAndRemove(del)
   res.send(`del success ${ss}`)})
 
 
