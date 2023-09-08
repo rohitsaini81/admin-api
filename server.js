@@ -11,13 +11,13 @@ const uri= "mongodb+srv://"+process.env.URI_PASS+"@cluster0.8t0hk4y.mongodb.net/
 app.use(cors())
 app.use(bodyParser.json());
 
-
 // Connect to the MongoDB database
-const dbcon=async(uri)=>{await mongoose.connect(uri, {
+const dbcon=(uri)=>{ mongoose.connect(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }).then(console.log("db connected !")).catch(e=>{console.log(e)})}
 // Define API routes
+
 const bookRoutes = require('./routes/pRoutes');
 app.use('/api/', bookRoutes);
 dbcon(uri);
