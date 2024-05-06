@@ -20,6 +20,8 @@ const dbcon=(uri)=>{ mongoose.connect(uri, {
 // Define API routes
 
 const bookRoutes = require('./routes/pRoutes');
+app.use(cors())
+
 app.use('/api/', bookRoutes);
 dbcon(uri);
 
